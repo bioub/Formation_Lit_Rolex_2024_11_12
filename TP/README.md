@@ -67,6 +67,10 @@ Ajouter ensuite ce filtre au niveau du `.map` pour n'afficher que les users dont
 )
 ```
 
+Bonus : observer les modifs du DOM au niveau des DevTools de Chrome
+et utiliser la directive repeat plutôt que .map pour optimiser les perfs.
+
+
 ## Exercice 5
 
 Créer un contrôleur `UsersController` dans le dossier `services`
