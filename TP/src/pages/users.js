@@ -1,12 +1,17 @@
 import '../components/users-filter.js';
 
 import { LitElement, css, html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { di } from '../di';
 
 export class UsersComponent extends LitElement {
   router = di.inject('router');
 
+  // /** @type {ShadowRootInit} */
+  // static shadowRootOptions = { mode: 'closed' };
+
+  /** @type {import('lit').PropertyDeclarations} */
   static properties = {
     searchTerm: { type: String },
     users: { type: Array },
@@ -37,14 +42,16 @@ export class UsersComponent extends LitElement {
       <div class="left">
         <my-users-filter></my-users-filter>
         <nav>
-          <a class="active" href="#"> Toto </a>
-          <a href="#"> Titi </a>
-          <a href="#"> Tata </a>
+          ${this.users.map(
+            (user) => html`
+              <a class="${classMap({ active: user.id % 2 === 0 })}" href="#">
+                ${user.name}
+              </a>
+            `,
+          )}
         </nav>
       </div>
-      <div class="right">
-        
-      </div>
+      <div class="right"></div>
     `;
   }
 
@@ -63,7 +70,7 @@ export class UsersComponent extends LitElement {
     }
 
     .left a.active {
-      background-color: lightblue;
+      background-color: var(--my-bg-color, lightblue);
     }
   `;
 }
