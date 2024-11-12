@@ -14,30 +14,40 @@ export class SelectElement extends LitElement {
     this._menuOpen = false;
   }
 
-  closeMenu = (event) => { 
-    if (!this.contains(event.target)) {
+  closeMenu = (event) => {    
+    if (!this.shadowRoot.contains(event.composedPath()[0])) {
       this._menuOpen = false;
     }
+  };
+
+  openMenu() {
+    this._menuOpen = true;
   }
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('click', this.closeMenu, { passive: true });
+    window.addEventListener('click', this.closeMenu);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener('click', this.closeMenu, { passive: true });
+    window.removeEventListener('click', this.closeMenu);
   }
 
   toggleOpenMenu() {
     this._menuOpen = !this._menuOpen;
   }
 
-  selectItem(item) {
+  selectItem(event) {
+    if (!event.target.classList.contains('item')) {
+      return;
+    }
+
+    const item = event.target.dataset.item;
+
     this.item = item;
     this._menuOpen = false;
-    this.shadowRoot.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent('item-change', {
         detail: item,
         bubbles: true,
@@ -50,10 +60,10 @@ export class SelectElement extends LitElement {
     return html`
       <div class="selected" @click=${this.toggleOpenMenu}>${this.item}</div>
       ${this._menuOpen
-        ? html`<div class="menu">
+        ? html`<div class="menu" @click=${this.selectItem}>
             ${this.items.map(
               (item) =>
-                html`<div class="item" @click=${() => this.selectItem(item)}>
+                html`<div class="item" data-item=${item}>
                   ${item}
                 </div> `,
             )}

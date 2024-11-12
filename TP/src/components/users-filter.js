@@ -1,11 +1,26 @@
 import { LitElement, css, html } from "lit";
 
 export class UsersFilterComponent extends LitElement {
+  static properties = {
+    filter: { type: String },
+  };
+
+  valueChange(event) {
+    this.filter = event.target.value;
+    this.dispatchEvent(new CustomEvent('filter-changed', {
+      detail: this.filter,
+      bubbles: true,
+      composed: true,
+    }));
+  }
+  
   render() {
     return html`
       <input
         type="text"
         placeholder="Filter users"
+        value=${this.filter}
+        @input=${this.valueChange}
       />
     `;
   }

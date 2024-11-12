@@ -77,7 +77,7 @@ Créer un contrôleur `UsersController` dans le dossier `services`
 
 Y ajouter cette méthode :
 
-```
+```js
 async hostConnected() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users", {
     signal: this.abortController.signal,
@@ -107,7 +107,7 @@ connectedCallback() {
 Dans `components/top-bar` afficher le titre présent dans le `SettingsStore` 
 Dans `pages/settings` afficher ce titre dans le champ et au submit du formulaire appeler la méthode `updateTitle` du store.
 
-## Exerice 7
+## Exercice 7
 
 Dans `routes.js` ajouter une clé `chidren` à la route `users` :
 
@@ -118,7 +118,7 @@ children: [
 ```
 
 Il faudra définir 2 enfants :
-- un dont le path et vide et une méthode 
+- un dont le path et vide et une méthode (avec un name)
 ```js
 render: () => html`<p>Select a user from the list</p>`
 ```
