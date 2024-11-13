@@ -1,11 +1,16 @@
 import { LitElement, css, html, nothing } from 'lit';
 
+import { CloseController } from './close-controller';
+
 export class SelectElement extends LitElement {
+  /** @type {import('lit').PropertyDeclarations} */
   static properties = {
     item: { type: String },
     items: { type: Array },
     _menuOpen: { type: Boolean, state: true },
   };
+
+  closeController = new CloseController(this);
 
   constructor() {
     super();
@@ -22,16 +27,6 @@ export class SelectElement extends LitElement {
 
   openMenu() {
     this._menuOpen = true;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('click', this.closeMenu);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener('click', this.closeMenu);
   }
 
   toggleOpenMenu() {

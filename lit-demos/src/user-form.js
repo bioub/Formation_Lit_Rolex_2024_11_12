@@ -11,6 +11,9 @@ export class UserFormElement extends LitElement {
     this.user = { name: '', email: '', newsletter: false };
   }
 
+  /**
+   * @param {SubmitEvent} event 
+   */
   submit(event) {
     event.preventDefault();
     console.log(this.user);

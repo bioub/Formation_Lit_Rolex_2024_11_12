@@ -8,6 +8,7 @@ import { createRef, ref } from 'lit/directives/ref.js';
 export class MyApp extends LitElement {
   static properties = {
     name: { type: String },
+    names: { type: Array },
   };
 
   mySelectRef = createRef();
@@ -15,6 +16,7 @@ export class MyApp extends LitElement {
   constructor() {
     super();
     this.name = 'World';
+    this.names = ['Romain', 'Jean', 'Paul'];
   }
   
   firstUpdated() {
@@ -32,8 +34,8 @@ export class MyApp extends LitElement {
     return html`
       <div>
         <my-hello name=${this.name}></my-hello>
-        <my-select ${ref(this.mySelectRef)} item=${this.name} .items="${['Romain', 'Jean', 'Paul']}" @item-change=${this.changeName}></my-select>
-        <my-user-form></my-user-form>
+        <my-select ${ref(this.mySelectRef)} item=${this.name} .items="${this.names}" @item-change=${this.changeName}></my-select>
+        <my-user-form></my-user-form
       </div>
     `;
   }
