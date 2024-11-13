@@ -5,6 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { repeat } from 'lit/directives/repeat.js';
 
 import { di } from '../di';
+import { UsersController } from '../services/UsersController.js';
 
 export class UsersComponent extends LitElement {
   router = di.inject('router');
@@ -12,20 +13,16 @@ export class UsersComponent extends LitElement {
   // /** @type {ShadowRootInit} */
   // static shadowRootOptions = { mode: 'closed' };
 
+  usersController = new UsersController(this);
+
   /** @type {import('lit').PropertyDeclarations} */
   static properties = {
     searchTerm: { type: String },
-    users: { type: Array },
   };
 
   constructor() {
     super();
     this.searchTerm = '';
-    this.users = [
-      { id: 1, name: 'Pierre' },
-      { id: 2, name: 'Paul' },
-      { id: 3, name: 'Jacques' },
-    ];
   }
 
   handleClick(event) {
@@ -47,7 +44,7 @@ export class UsersComponent extends LitElement {
         ></my-users-filter>
         <nav>
           ${repeat(
-            this.users.filter((u) =>
+            this.usersController.items.filter((u) =>
               u.name.toLowerCase().includes(this.searchTerm.toLowerCase()),
             ),
             (user) => user.id,
