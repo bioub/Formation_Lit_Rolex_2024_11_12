@@ -134,3 +134,23 @@ Modifier ensuite le code de `pages/users` :
 Créer une Async Task pour récupérer les données de `https://jsonplaceholder.typicode.com/users/${userId}` (où `${userId}` est l'id présent dans la route).
 
 Afficher les données avec un loader et une erreur via les 3 fonctions : `pending`, `error` et`complete`
+
+## Bonus
+
+Créer un composant `CardComponent` qui va afficher via 2 slots un header et un contenu (voir la slide 42)
+
+Créer un composant `NameInfoCardComponent` qui va encapsuler le composant `CardComponent` et qui va ajouter un formulaire avec un champ `name` et un bouton `submit`
+
+Au `submit` du formulaire, envoyer un call via un Controleur HTTP vers `https://api.agify.io/?name=Romain` en remplaçant `Romain` par le prénom saisi dans le champs.
+
+Afficher l'age prédit par l'API sous le formulaire.
+
+Modifier le contrôleur pour qu'il envoit également des requêtes vers :
+- `https://api.genderize.io?name=luc` (affiche le genre probable de la personne)
+- `https://api.nationalize.io?name=nathaniel` (affiche la nationnalité probable de la personne)
+(si possible les combiner avec `Promise.all`)
+
+Prévoir un loader pendant le chargement.
+
+Afficher `NameInfoCardComponent` sur la `Home`
+
