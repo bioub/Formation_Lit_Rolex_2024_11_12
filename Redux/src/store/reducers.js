@@ -1,14 +1,14 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createReducer } from '@reduxjs/toolkit';
 
-import { fetchUsers, updateFilter, updateTitle } from "./actions";
+import { fetchUsers, updateFilter, updateTitle } from './actions';
 
 const initialState = {
-  title: "My App",
+  title: 'My App',
   users: {
     data: [],
-    status: "idle",
-    error: "",
-    filter: "",
+    status: 'idle',
+    error: '',
+    filter: '',
   },
 };
 
@@ -22,13 +22,13 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(fetchUsers.fulfilled, (state, action) => {
       state.users.data = action.payload;
-      state.users.status = "success";
+      state.users.status = 'success';
     })
     .addCase(fetchUsers.pending, (state, action) => {
-      state.users.status = "pending";
+      state.users.status = 'pending';
     })
     .addCase(fetchUsers.rejected, (state, action) => {
-      state.users.status = "error";
+      state.users.status = 'error';
       state.users.error = action.error.message;
     });
 });

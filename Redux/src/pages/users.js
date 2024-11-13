@@ -1,12 +1,12 @@
-import "../components/users-filter.js";
+import '../components/users-filter.js';
 
-import { LitElement, css, html } from "lit";
-import { classMap } from "lit/directives/class-map.js";
+import { LitElement, css, html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
-import { Compose } from "../mixins/compose.js";
-import { WithRouter } from "../mixins/with-router.js";
-import { WithStore } from "../mixins/with-store.js";
-import { fetchUsers, updateFilter } from "../store/actions.js";
+import { Compose } from '../mixins/compose.js';
+import { WithRouter } from '../mixins/with-router.js';
+import { WithStore } from '../mixins/with-store.js';
+import { fetchUsers, updateFilter } from '../store/actions.js';
 
 export class UsersComponent extends Compose(LitElement, WithRouter, WithStore) {
   static properties = {
@@ -37,15 +37,10 @@ export class UsersComponent extends Compose(LitElement, WithRouter, WithStore) {
   render() {
     return html`
       <div class="left">
-        <my-users-filter
-          .filter=${this.filter}
-          @filter-changed=${this.handleFilterChanged}
-        ></my-users-filter>
+        <my-users-filter .filter=${this.filter} @filter-changed=${this.handleFilterChanged}></my-users-filter>
         <nav>
           ${this.users.data
-            .filter((u) =>
-              u.name.toLowerCase().includes(this.filter.toLowerCase()),
-            )
+            .filter((u) => u.name.toLowerCase().includes(this.filter.toLowerCase()))
             .map(
               (user) => html`
                 <a
@@ -87,4 +82,4 @@ export class UsersComponent extends Compose(LitElement, WithRouter, WithStore) {
   `;
 }
 
-customElements.define("my-users", UsersComponent);
+customElements.define('my-users', UsersComponent);

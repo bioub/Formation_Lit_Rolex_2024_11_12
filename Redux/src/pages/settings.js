@@ -1,7 +1,7 @@
-import { LitElement, html } from "lit";
+import { LitElement, html } from 'lit';
 
-import { WithStore } from "../mixins/with-store";
-import { updateTitle } from "../store/actions";
+import { WithStore } from '../mixins/with-store';
+import { updateTitle } from '../store/actions';
 
 export class SettingsComponent extends WithStore(LitElement) {
   static properties = {
@@ -15,7 +15,7 @@ export class SettingsComponent extends WithStore(LitElement) {
   handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const title = formData.get("title");
+    const title = formData.get('title');
     this.store.dispatch(updateTitle(title));
   }
 
@@ -34,4 +34,4 @@ export class SettingsComponent extends WithStore(LitElement) {
   }
 }
 
-customElements.define("my-settings", SettingsComponent);
+customElements.define('my-settings', SettingsComponent);

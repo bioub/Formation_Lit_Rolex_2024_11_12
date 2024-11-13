@@ -1,6 +1,6 @@
-import { ContextConsumer } from "@lit/context";
+import { ContextConsumer } from '@lit/context';
 
-import { routerContext } from "../routes";
+import { routerContext } from '../routes';
 
 export function WithRouter(superClass) {
   class WithRouterElement extends superClass {

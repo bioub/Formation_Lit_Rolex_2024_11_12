@@ -1,6 +1,6 @@
-import { ContextConsumer } from "@lit/context";
+import { ContextConsumer } from '@lit/context';
 
-import { storeContext } from "../store";
+import { storeContext } from '../store';
 
 export function WithStore(superClass) {
   class WithStoreElement extends superClass {

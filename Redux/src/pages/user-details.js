@@ -1,22 +1,16 @@
-import { LitElement, css, html } from "lit";
+import { LitElement, css, html } from 'lit';
 
-import { Compose } from "../mixins/compose";
-import { WithRouter } from "../mixins/with-router";
-import { WithStore } from "../mixins/with-store";
+import { Compose } from '../mixins/compose';
+import { WithRouter } from '../mixins/with-router';
+import { WithStore } from '../mixins/with-store';
 
-export class UserDetailsComponent extends Compose(
-  LitElement,
-  WithRouter,
-  WithStore,
-) {
+export class UserDetailsComponent extends Compose(LitElement, WithRouter, WithStore) {
   static properties = {
     user: { type: Object },
   };
 
   stateChanged(state) {
-    this.user = state.users.data.find(
-      (u) => u.id == this.router.resolver.route.parameters.id,
-    );
+    this.user = state.users.data.find((u) => u.id == this.router.resolver.route.parameters.id);
   }
 
   render() {
@@ -34,4 +28,4 @@ export class UserDetailsComponent extends Compose(
   `;
 }
 
-customElements.define("my-user-details", UserDetailsComponent);
+customElements.define('my-user-details', UserDetailsComponent);

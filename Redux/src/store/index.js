@@ -1,9 +1,9 @@
-import { createContext } from "@lit/context";
-import { configureStore } from "@reduxjs/toolkit";
+import { createContext } from '@lit/context';
+import { configureStore } from '@reduxjs/toolkit';
 
-import { reducer } from "./reducers";
+import { reducer } from './reducers';
 
-export const storeContext = createContext("store");
+export const storeContext = createContext('store');
 export const store = configureStore({
   reducer: reducer,
 });

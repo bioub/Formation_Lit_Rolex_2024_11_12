@@ -1,11 +1,11 @@
-import "./components/top-bar";
+import './components/top-bar';
 
-import { ContextProvider } from "@lit/context";
-import { LitElement, css, html } from "lit";
+import { ContextProvider } from '@lit/context';
+import { LitElement, css, html } from 'lit';
 
-import { Router } from "./lib/router/index.js";
-import { routerContext, routes } from "./routes";
-import { store, storeContext } from "./store";
+import { Router } from './lib/router/index.js';
+import { routerContext, routes } from './routes';
+import { store, storeContext } from './store';
 
 export class AppComponent extends LitElement {
   _storeProvider = new ContextProvider(this, {
@@ -30,12 +30,10 @@ export class AppComponent extends LitElement {
     return html`
       <my-top-bar></my-top-bar>
       <main>
-        <rlx-flx-router-view
-          .router=${this._routerProvider.value}
-        ></rlx-flx-router-view>
+        <rlx-flx-router-view .router=${this._routerProvider.value}></rlx-flx-router-view>
       </main>
     `;
   }
 }
 
-customElements.define("my-app", AppComponent);
+customElements.define('my-app', AppComponent);

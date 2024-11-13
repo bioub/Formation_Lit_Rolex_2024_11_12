@@ -1,14 +1,10 @@
-import { LitElement, css, html } from "lit";
+import { LitElement, css, html } from 'lit';
 
-import { Compose } from "../mixins/compose";
-import { WithRouter } from "../mixins/with-router";
-import { WithStore } from "../mixins/with-store";
+import { Compose } from '../mixins/compose';
+import { WithRouter } from '../mixins/with-router';
+import { WithStore } from '../mixins/with-store';
 
-export class TopBarComponent extends Compose(
-  LitElement,
-  WithRouter,
-  WithStore,
-) {
+export class TopBarComponent extends Compose(LitElement, WithRouter, WithStore) {
   static properties = {
     _title: { type: String, state: true },
   };
@@ -58,4 +54,4 @@ export class TopBarComponent extends Compose(
   `;
 }
 
-customElements.define("my-top-bar", TopBarComponent);
+customElements.define('my-top-bar', TopBarComponent);

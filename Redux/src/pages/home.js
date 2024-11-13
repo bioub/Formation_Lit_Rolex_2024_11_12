@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit";
+import { html, LitElement } from 'lit';
 
 export class HomeComponent extends LitElement {
   render() {
@@ -9,4 +9,4 @@ export class HomeComponent extends LitElement {
   }
 }
 
-customElements.define("my-home", HomeComponent);
+customElements.define('my-home', HomeComponent);
