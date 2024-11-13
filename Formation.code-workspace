@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "lit-demos",
+			"path": "lit-demos"
+		},
+		{
+			"name": "TP",
+			"path": "TP"
+		},
+		{
+			"path": "Redux"
+		}
+	],
+	"settings": {}
+}
