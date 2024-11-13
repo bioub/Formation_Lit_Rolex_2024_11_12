@@ -19,6 +19,8 @@ export class MyApp extends LitElement {
   
   firstUpdated() {
     super.firstUpdated();
+    // const mySelectEl = this.shadowRoot.querySelector('my-select');
+    // mySelectEl.openMenu();
     this.mySelectRef.value.openMenu();
   }
 
